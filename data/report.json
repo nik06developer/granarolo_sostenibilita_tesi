@@ -1,0 +1,251 @@
+{
+  "_nota": "Dati usati in index.html e in js/charts.js, con la pagina di provenienza nel Bilancio di Sostenibilità 2024 (report/granarolo-bilancio-sostenibilita-2024-it.pdf). Dove il report non riporta un'informazione il campo è assente.",
+
+  "azienda": {
+    "nome": "Gruppo Granarolo",
+    "sitoUfficiale": "https://www.gruppogranarolo.it",
+    "filiera": "Granlatte (consorzio di allevatori soci) → Granarolo S.p.A.",
+    "fondazione": "1957, Consorzio Bolognese Produttori Latte",
+    "fatturatoConsolidato2024_mlnEuro": 1720,
+    "ebitda2024_mlnEuro": 82.01,
+    "dipendentiTotali2024": 2532,
+    "dipendentiTotali2023": 2490,
+    "stabilimenti": "15 in Italia, 8 all'estero",
+    "latteLavoratoAnno2024_quintali": 8967480,
+    "quotaLatteDaSociGranlatte2024_percento": 97,
+    "quotaFatturatoEstero_percento": 40
+  },
+
+  "report": [
+    {
+      "anno": 2024,
+      "titolo": "Bilancio di Sostenibilità 2024",
+      "tipo": "integrale",
+      "lingua": "it",
+      "pagine": 280,
+      "pesoMB": 18.1,
+      "file": "report/granarolo-bilancio-sostenibilita-2024-it.pdf",
+      "copertina": "assets/img/cover-2024-integrale.webp",
+      "copertinaW": 400,
+      "copertinaH": 565,
+      "fonteUfficiale": "https://www.gruppogranarolo.it/chi-siamo/csr-report-2024",
+      "standard": "GRI Standards, in percorso di allineamento a CSRD/ESRS (doppia materialità)"
+    },
+    {
+      "anno": 2023,
+      "titolo": "Bilancio di Sostenibilità 2023",
+      "tipo": "integrale",
+      "lingua": "it",
+      "pagine": 280,
+      "pesoMB": 16.7,
+      "file": "report/granarolo-bilancio-sostenibilita-2023-it.pdf",
+      "copertina": "assets/img/cover-2023-integrale.webp",
+      "copertinaW": 400,
+      "copertinaH": 565,
+      "fonteUfficiale": "https://www.gruppogranarolo.it/chi-siamo/csr-report-2023",
+      "standard": "GRI Standards"
+    },
+    {
+      "anno": 2023,
+      "titolo": "Il contributo di Granarolo agli SDGs — Sintesi del Bilancio di Sostenibilità 2023",
+      "tipo": "sintesi",
+      "lingua": "it",
+      "pagine": 15,
+      "pesoMB": 3.0,
+      "file": "report/granarolo-sintesi-sdgs-2023-it.pdf",
+      "copertina": "assets/img/cover-2023-sintesi.webp",
+      "copertinaW": 400,
+      "copertinaH": 283,
+      "fonteUfficiale": "https://www.gruppogranarolo.it/chi-siamo/csr-report-2023",
+      "standard": "GRI Standards"
+    },
+    {
+      "anno": 2023,
+      "titolo": "Sustainability Report 2023 — Summary",
+      "tipo": "sintesi",
+      "lingua": "en",
+      "pagine": 15,
+      "pesoMB": 1.8,
+      "file": "report/granarolo-summary-2023-en.pdf",
+      "copertina": "assets/img/cover-2023-summary-en.webp",
+      "copertinaW": 400,
+      "copertinaH": 283,
+      "fonteUfficiale": "https://www.granarologroup.com/",
+      "standard": "GRI Standards"
+    },
+    {
+      "anno": 2022,
+      "titolo": "Bilancio di Sostenibilità 2022",
+      "tipo": "integrale",
+      "lingua": "it",
+      "pagine": 132,
+      "pesoMB": 14.5,
+      "file": "report/granarolo-bilancio-sostenibilita-2022-it.pdf",
+      "copertina": "assets/img/cover-2022-integrale.webp",
+      "copertinaW": 400,
+      "copertinaH": 565,
+      "fonteUfficiale": "https://www.gruppogranarolo.it/csr-report-2022",
+      "standard": "GRI Standards"
+    },
+    {
+      "anno": 2021,
+      "titolo": "Bilancio di Sostenibilità 2021",
+      "tipo": "integrale",
+      "lingua": "it",
+      "pagine": 126,
+      "pesoMB": 9.6,
+      "file": "report/granarolo-bilancio-sostenibilita-2021-it.pdf",
+      "copertina": "assets/img/cover-2021-integrale.webp",
+      "copertinaW": 400,
+      "copertinaH": 565,
+      "fonteUfficiale": "https://www.improntaetica.org/wp-content/uploads/2022/08/granarolo-bilancio-di-sostenibilita-2021.pdf",
+      "standard": "GRI Standards",
+      "notaFonte": "Copia ufficiale non più raggiungibile su gruppogranarolo.it al momento della raccolta dati; recuperata dall'archivio di Impronta Etica, associazione che ha assistito Granarolo nella redazione dei bilanci di sostenibilità."
+    },
+    {
+      "anno": 2020,
+      "titolo": "Bilancio di Sostenibilità 2020",
+      "tipo": "integrale",
+      "lingua": "it",
+      "pagine": 118,
+      "pesoMB": 11.4,
+      "file": "report/granarolo-bilancio-sostenibilita-2020-it.pdf",
+      "copertina": "assets/img/cover-2020-integrale.webp",
+      "copertinaW": 400,
+      "copertinaH": 565,
+      "fonteUfficiale": "https://www.gruppogranarolo.it/system/granarolo_corporate/attachments/data/000/001/094/original/Bilancio_Sostenibilita_Granarolo_2020_27_07.pdf",
+      "standard": "GRI Standards"
+    },
+    {
+      "anno": 2019,
+      "titolo": "Bilancio di Sostenibilità 2019",
+      "tipo": "integrale",
+      "lingua": "it",
+      "pagine": 111,
+      "pesoMB": 6.4,
+      "file": "report/granarolo-bilancio-sostenibilita-2019-it.pdf",
+      "copertina": "assets/img/cover-2019-integrale.webp",
+      "copertinaW": 400,
+      "copertinaH": 565,
+      "fonteUfficiale": "https://www.improntaetica.org/wp-content/uploads/2020/07/Bilancio-di-sostenibilit%C3%A0-2019_Granarolo.pdf",
+      "standard": "GRI Standards",
+      "notaFonte": "Recuperata dall'archivio di Impronta Etica."
+    },
+    {
+      "anno": 2019,
+      "titolo": "Sintesi del Bilancio di Sostenibilità 2019",
+      "tipo": "sintesi",
+      "lingua": "it",
+      "pagine": 11,
+      "pesoMB": 1.9,
+      "file": "report/granarolo-sintesi-2019-it.pdf",
+      "copertina": "assets/img/cover-2019-sintesi.webp",
+      "copertinaW": 400,
+      "copertinaH": 283,
+      "fonteUfficiale": "https://www.gruppogranarolo.it/system/granarolo_corporate/attachments/data/000/001/105/original/Sintesi_Bilancio_di_Sostenibilita%CC%80_2019_-_Granarolo.pdf",
+      "standard": "GRI Standards"
+    }
+  ],
+
+  "kpi": {
+
+    "emissioniGHG": {
+      "unita": "t CO2 eq",
+      "descrizione": "Emissioni dirette (Scope 1) e indirette da energia acquistata, location-based (Scope 2), stabilimenti italiani, triennio 2022-2024. GRI 305-1 / 305-2.",
+      "scope1": { "2022": 42892, "2023": 44602, "2024": 46435 },
+      "scope2LocationBased": { "2022": 79528, "2023": 82413, "2024": 84861 },
+      "scope2MarketBased2024": 58854,
+      "notaScope2MarketBased": "Il valore market-based 2024 (58.854 t) è più basso del location-based (84.861 t) grazie a 29.693 t di risparmio da Garanzie d'Origine per energia rinnovabile.",
+      "fonte": "Bilancio di Sostenibilità 2024, pag. 236, tabelle GRI 305-1 e 305-2"
+    },
+
+    "carbonFootprintStalla": {
+      "unita": "kg CO2eq / litro di latte",
+      "latteConvenzionale": 1.47,
+      "latteBiologico": 1.03,
+      "certificazione": "EPD (Environmental Product Declaration)",
+      "fonte": "Bilancio di Sostenibilità 2024, pag. 23 (infografica 'Sostenibilità ambientale', valori EPD)"
+    },
+
+    "energia": {
+      "unita": "MWh",
+      "anno": 2024,
+      "fontiFossili": 385072.4,
+      "fontiRinnovabili": 42981.7,
+      "fontiNucleari": 190.7,
+      "totale": 428244.8,
+      "quotaRinnovabile_percento": 10.0,
+      "fonte": "Bilancio di Sostenibilità 2024, pag. 234, tabella ESRS E1-5"
+    },
+
+    "acqua": {
+      "unita": "m3",
+      "prelieviTotali": { "2022": 5141450, "2023": 5467206, "2024": 5653011 },
+      "prelieviDaPozzi2024": 4854567,
+      "prelieviDaAcquedotti2024": 798444,
+      "consumiTotali": { "2022": 1055385, "2023": 994390, "2024": 1092469 },
+      "nota": "Tutti i prelievi idrici avvengono in aree classificate a rischio idrico medio-alto (WWF Water Risk Filter). Prelievi 2024 in aumento del 3% sul 2023 per la maggiore quota di prodotti caseari idroesigenti.",
+      "fonte": "Bilancio di Sostenibilità 2024, pag. 236-237, tabelle GRI 303-3 e 303-4"
+    },
+
+    "piano2030": {
+      "obiettivoGenerale": "Ridurre le emissioni di gas a effetto serra del 30% per kg di latte prodotto dalla filiera entro il 2030",
+      "notaAnnoBase": "Il report non dichiara un anno base per questo obiettivo, né nel testo né nell'infografica.",
+      "pilastri": [
+        {
+          "nome": "Benessere animale e riduzione dell'impatto ambientale alla stalla",
+          "target": "-30.000 t CO2 eq/anno",
+          "azioni": "Standard di certificazione benessere animale elevati su tutte le stalle della filiera (già tutte certificate Classyfarm e Bonlatte); progetto Carbon Footprint con le Università di Brescia, Milano e Bologna"
+        },
+        {
+          "nome": "Riduzione della plastica",
+          "raggiunto": { "periodo": "2018-2024", "valore_tCO2eq": 5600 },
+          "target": { "periodo": "2025-2026", "valore_tCO2eq": 1000 }
+        },
+        {
+          "nome": "Piano anti-spreco (riduzione resi)",
+          "raggiunto": { "periodo": "2022-2024", "valore_tCO2eq": 19000 },
+          "target": { "periodo": "2025-2026", "valore_tCO2eq": 12000 }
+        }
+      ],
+      "sdgCollegati": [12, 13, 17],
+      "fonte": "Bilancio di Sostenibilità 2024, pag. 23"
+    },
+
+    "materialita": {
+      "metodologia": "Doppia materialità ESRS/CSRD: impact materiality (impatto dell'azienda su ambiente/persone) + financial materiality (rilevanza finanziaria per l'azienda). Assi 2.5-5.0.",
+      "notaLettura": "Coordinate lette visivamente dal grafico a dispersione originale del report (pag. 44); precisione stimata ±0.1 su ciascun asse.",
+      "temi": [
+        { "codice": "G1", "nome": "Condotta delle imprese", "impact": 3.8, "financial": 3.7 },
+        { "codice": "S3", "nome": "Comunità interessate", "impact": 3.65, "financial": 3.05 },
+        { "codice": "E5", "nome": "Economia circolare", "impact": 3.6, "financial": 3.2 },
+        { "codice": "E1", "nome": "Cambiamenti climatici", "impact": 3.5, "financial": 3.4 },
+        { "codice": "S4", "nome": "Consumatori e utilizzatori finali", "impact": 3.5, "financial": 3.05 },
+        { "codice": "S2", "nome": "Lavoratori nella catena del valore", "impact": 3.45, "financial": 2.8 },
+        { "codice": "E3", "nome": "Acqua e risorse marine", "impact": 3.3, "financial": 3.15 },
+        { "codice": "S1", "nome": "Forza lavoro propria", "impact": 3.3, "financial": 3.0 },
+        { "codice": "E4", "nome": "Biodiversità ed ecosistemi", "impact": 3.15, "financial": 2.6 },
+        { "codice": "E2", "nome": "Inquinamento", "impact": 3.0, "financial": 3.1 }
+      ],
+      "fonte": "Bilancio di Sostenibilità 2024, pag. 44"
+    },
+
+    "persone": {
+      "dipendentiTotali": { "2023": 2490, "2024": 2532 },
+      "oreFormazioneTotali": { "2023": 15524, "2024": 20757 },
+      "oreFormazionePerGenere2024": { "uomini": 4550, "donne": 16207 },
+      "infortuniDipendentiGranaroloSpA": { "2023": 33, "2024": 28 },
+      "giorniPersiInfortuni": { "2023": 954, "2024": 1214 },
+      "decessi2024": 0,
+      "fonte": "Bilancio di Sostenibilità 2024, pag. 165-170, GRI 2-7 / 404-1 / 403-9"
+    },
+
+    "economici": {
+      "unita": "milioni di euro",
+      "fatturatoConsolidato": { "2023": 1640.8, "2024": 1720.0 },
+      "valoreEconomicoGenerato": { "2023": 1640.8, "2024": 1742.4 },
+      "valoreEconomicoDistribuito": { "2023": 1578.2, "2024": 1673.7 },
+      "fonte": "Bilancio di Sostenibilità 2024, pag. 104, GRI 201-1"
+    }
+  }
+}

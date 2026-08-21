@@ -1,0 +1,84 @@
+/* Reset minimo: solo le differenze fra browser che darebbero fastidio in style.css. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Margini a zero: li rimetto nei componenti con i token, così lo spazio
+   verticale è deciso da me e non dai default del browser. */
+html,
+body,
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+/* Solo le liste "di layout" (quelle con una classe): quelle di contenuto
+   tengono i pallini. */
+ul[class],
+ol[class] {
+  list-style: none;
+  padding: 0;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Corsivo per l'alt text mostrato mentre l'immagine carica */
+img {
+  font-style: italic;
+}
+
+a {
+  color: inherit;
+}
+
+/* I form control non ereditano font e colore da soli */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Qui e non nei singoli componenti, così vale per qualsiasi animazione
+   aggiunga in futuro. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

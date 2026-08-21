@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="it" class="no-js">
+<head>
+  <!-- Il charset va nei primi 1024 byte del file, quindi prima di
+       qualsiasi commento lungo (all'inizio l'avevo messo dopo e il
+       validatore W3C dava errore). -->
+  <meta charset="UTF-8" />
+
+  <!--
+    Bilanci di sostenibilità Granarolo — pagina unica.
+
+    Due cose da sapere prima di leggere il resto:
+    - I numeri in pagina vengono dal bilancio 2024, con la pagina di
+      provenienza annotata in data/report.json.
+    - Il JavaScript aggiunge comodità, non contenuti: senza, le sezioni si
+      leggono lo stesso, i download funzionano e il filtro dell'archivio
+      semplicemente non filtra.
+  -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Granarolo — bilanci di sostenibilità</title>
+  <meta name="description" content="Le attività di sostenibilità del gruppo Granarolo, dalla stalla al consumatore, e l'archivio completo e scaricabile dei bilanci di sostenibilità dal 2019 a oggi." />
+
+  <!-- Icona del tab: la G ritagliata dal logo dell'header -->
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/print.css" media="print" />
+
+  <!-- L'unico script senza defer: deve girare prima che la pagina venga
+       disegnata, altrimenti per un istante si vede il menu nella versione
+       "senza JS" prima che app.js lo trasformi. -->
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <!-- 1. SKIP LINK — primo stop da tastiera, salta header e menu -->
+  <a class="skip-link" href="#contenuto">Salta al contenuto principale</a>
+
+  <!-- 2. HEADER STICKY -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="#top">
+        <!--
+          LOGO — preso da Wikimedia Commons ("Granarolo corporate POS2.svg"),
+          ripulito dal markup di export di Illustrator. Unica modifica al
+          disegno: il teal originale #5CBCAD sostituito da var(--color-primary).
+          SVG inline e non <img> perché così segue la dark mode: un <img>
+          non vede il CSS della pagina.
+        -->
+        <svg class="brand__logo" viewBox="0 0 984.1 439.2" aria-hidden="true" focusable="false">
+          <g fill="var(--color-primary)" fill-rule="evenodd">
+            <path d="M28,237.6h362.5v5.8H28V237.6z" />
+            <path d="M575.6,237.6h380.5v5.8H575.6V237.6z" />
+            <path d="M508.2,95.9l0.2-0.4c-1.3,16.2-12.9,28.5-31.8,28.5c-20.2,0-32-13.8-32-31.4
+              c0-16.7,10.7-30.5,29.1-31.8h34.5V95.9z M556.9,25.8c0,0-69.2-1.8-84.8-1.8c-40.9,0-68.5,33.4-68.5,72.5
+              c0,38.5,30.2,69,69.4,69c17.6,0,30-5.8,42.3-18v30.7c0,21.4-9.6,40.5-34.9,40.5c-32.5,0-35-32.7-36.1-37.4l-34.9,21.8
+              c0,0,9.8,63.4,76.1,63.4c49.2,0,71.4-34.3,71.4-91V25.8z" />
+            <path d="M392.5,113.5l-53.9,69.2l32.1,30.9l69.6-43.6c0,0-17.6-5.6-31.4-22.2
+              C394.3,130.4,392.5,113.5,392.5,113.5z" />
+            <path d="M305.5,354.7l-10-38.3c-1.5,7.1-9.1,38-9.1,38L305.5,354.7z M193.5,324.6c0-8.2-3.5-11.3-12.4-11.3
+              h-5.8v23.1h6C189.5,336.4,193.5,332.6,193.5,324.6z M355.3,408.9c-15.4,0-34.5,4.5-40.1-18.2c-1.8-6-3.3-10.5-3.3-10.5H279
+              l-8.5,28.7h-29.8c-19.1,1.8-33.1,5.6-40.7-17.8h-0.2c-1.8-5.3-3.1-9.6-3.6-10.5c-2.7-9.1-4-11.6-6.4-14.9
+              c-2.5-3.5-4.2-4-10.5-4h-4v47.2h-32.7v-125h40.9c29.8,0,43.8,10.9,43.8,33.8c0,14.5-5.8,26.2-17.8,31.2
+              c8.2,3.8,10.9,6.9,17.6,24.2l5.6,15.6c2.9,7.6,5.1,12,6.9,14.7c6-19.8,26.7-86.3,32.3-101.9c6.2-18.5,19.1-18.3,31.8-18.3
+              c7.3,0,11.8,0.7,11.8,0.7L355.3,408.9z M923.2,346.6c0-19.8-7.8-32.3-20.9-32.3c-12.9,0-20.9,12.7-20.9,32.7
+              c0,19.4,8.7,31.8,21.4,31.8C915.6,378.9,923.2,366.9,923.2,346.6z M956.1,346.4c0,38.3-21.8,64.3-53.4,64.3
+              c-19.8,0-36.1-10.2-45.4-27.2c-0.2,7.8-3.8,25.4-26,25.4h-41.4v-125h32.7v95.7h32.9c-4.3-9.6-6.7-20.5-6.7-33.2
+              c0-37.4,22-64.5,53-64.5C933.4,281.9,956.1,309.1,956.1,346.4z M620.3,336.2h-6V313h5.8c9.1,0,12.7,3.3,12.7,11.6
+              C632.8,332.6,628.6,336.2,620.3,336.2z M678.6,403.4c-1.8-2.9-4-7.3-6.9-14.9l-5.6-15.4c-6.4-17.6-9.3-20.7-17.3-24.5
+              c11.8-4.9,17.8-16.5,17.8-31.2c0-22.7-14.2-33.8-43.8-33.8h-41v125.3h32.5v-47.2h4c6.2,0,8.2,0.2,10.7,3.8
+              c2.2,3.3,3.8,6,6.5,15.1c0.2,0.9,1.8,5.1,3.6,10.2c7.6,23.6,23.1,19.6,42.3,17.8L678.6,403.4z M748.1,346.6
+              c0-19.8-7.8-32.3-20.9-32.3c-12.9,0-20.9,12.7-20.9,32.7c0,19.4,8.5,31.8,21.4,31.8C740.5,378.9,748.1,366.9,748.1,346.6z
+              M780.8,346.4c0,38.3-21.6,64.3-53.2,64.3c-31.8,0-53.9-26.2-53.9-64.3c0-37.4,22-64.5,53-64.5
+              C758.3,281.9,780.8,309.1,780.8,346.4z M422.3,302.8c0,24.2,0,35.4,0.2,42.5l-2-3.3c-0.2-0.9-0.9-2.2-1.8-3.5l-2.2-3.8
+              c-1.6-2.9-30.3-50.7-30.3-50.7h-30.9v125h31.6v-58.7c0-0.5,0-1.6-0.2-3.1l-0.2-4c1.8,2.7,2.2,4,3.3,5.8l35.8,60.1h28
+              l0.4-126.8C454.1,282.1,422.1,277,422.3,302.8z M527.8,354.7l-10-38.3c-1.5,7.1-9.3,38-9.3,38L527.8,354.7z M537.8,283.9
+              l39.8,125c-15.4,0-34.5,4.5-40.3-18.2c-1.6-6-3.3-10.5-3.3-10.5h-32.7l-8.5,28.7h-32.7c0,0,27.6-89.2,34-107.5
+              c6.2-18.5,19.1-18.3,31.8-18.3C533.3,283.2,537.8,283.9,537.8,283.9z M61.2,348.4c0,10.9,3.5,20.7,10.2,27.4
+              c5.3,5.3,12.4,8.4,20.2,8.4c1.8,0,2.9-0.2,4.5-0.7l2-0.4h1.3v-1.6V348h30.9v61c-12,4.2-23.6,6.2-35.8,6.2
+              c-19.8,0-36.3-6.2-48.3-18.3c-11.8-11.8-18.3-28.7-18.3-48c0-20.3,6.9-38.1,19.4-50.5c12-12,28.3-18.5,46.9-18.5
+              c6.5,0,13.6,0.9,19.4,2.7c28.5,8.9,15.1,37.4,15.1,37.4c-10.9-7.8-19.6-9.1-30.5-9.1C75.6,310.8,61.2,325.5,61.2,348.4z" />
+          </g>
+        </svg>
+        <span class="visually-hidden">Granarolo</span>
+        <span class="brand__sub">Sostenibilità</span>
+      </a>
+
+      <!-- aria-expanded lo aggiorna app.js; senza JS il bottone resta
+           nascosto dal CSS -->
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="visually-hidden">Apri il menu di navigazione</span>
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Sezioni della pagina">
+        <ul>
+          <li><a href="#contesto">Il contesto</a></li>
+          <li><a href="#filiera">La filiera</a></li>
+          <li><a href="#pilastri">I pilastri</a></li>
+          <li><a href="#numeri">I numeri</a></li>
+          <li><a href="#obiettivi">Obiettivi 2030</a></li>
+          <li><a href="#archivio">Archivio report</a></li>
+          <li><a href="#fonti">Fonti</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenuto">
+    <!-- 3. HERO — id="top" è dove puntano il logo e il link in fondo alla
+         pagina. Sta sulla sezione e non su uno span vuoto, così lo
+         scrollspy di app.js riesce a osservarla. -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__inner">
+        <p class="hero__eyebrow">gruppo Granarolo · Filiera Granlatte</p>
+        <h1 id="hero-title">La sostenibilità nasce in stalla, prima ancora che in stabilimento</h1>
+        <p class="hero__lead">
+          Granarolo lavora ogni anno quasi 9 milioni di quintali di latte, per il 97% conferito
+          dagli allevatori soci del consorzio Granlatte. Qui raccontiamo cosa significa, in numeri
+          verificabili, e mettiamo a disposizione l'intero archivio dei bilanci di sostenibilità
+          del gruppo, scaricabile liberamente.
+        </p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="report/granarolo-bilancio-sostenibilita-2024-it.pdf" download>
+            Scarica il bilancio 2024
+            <span class="visually-hidden">— PDF, italiano, 18,1 MB, 280 pagine</span>
+          </a>
+          <a class="button button--ghost" href="#archivio">Vai all'archivio completo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. IL CONTESTO -->
+    <section class="section" id="contesto" aria-labelledby="contesto-title">
+      <div class="section__inner">
+        <p class="section__eyebrow">Il settore primario</p>
+        <h2 id="contesto-title">Una filiera che comincia nel campo e nella stalla</h2>
+
+        <div class="prose-grid">
+          <div class="prose">
+            <p>
+              Il settore primario (agricoltura, allevamento, pesca, silvicoltura) è il punto
+              d'origine di ogni filiera agroalimentare, ed è anche il punto in cui gli impatti
+              ambientali e sociali della sostenibilità si decidono per primi: uso del suolo,
+              benessere animale, emissioni legate agli allevamenti, gestione dei reflui.
+            </p>
+            <p>
+              Il <strong>gruppo Granarolo</strong> nasce nel 1957 come Consorzio Bolognese
+              Produttori Latte e resta, quasi settant'anni dopo, un modello cooperativo: dietro il
+              marchio Granarolo c'è <strong>Granlatte</strong>, il consorzio degli allevatori soci
+              che conferisce la materia prima. Nel 2024 il latte dei soci Granlatte ha
+              rappresentato il <strong>97%</strong> del totale acquistato dal gruppo: il legame
+              con il settore primario non è un richiamo di facciata, è la struttura stessa
+              dell'azienda.
+            </p>
+            <p>
+              È anche per questo che gran parte dello sforzo di sostenibilità raccontato nel
+              bilancio 2024 si concentra "a monte": impronta carbonica alla stalla, benessere
+              animale certificato, biometano da reflui zootecnici, prima che negli stabilimenti di
+              trasformazione.
+            </p>
+          </div>
+
+          <dl class="stat-grid" aria-label="Numeri d'insieme del gruppo Granarolo, 2024">
+            <div class="stat-grid__item">
+              <dt>Fatturato consolidato 2024</dt>
+              <dd>1,720 mld €</dd>
+            </div>
+            <div class="stat-grid__item">
+              <dt>Dipendenti del gruppo</dt>
+              <dd>2.532</dd>
+            </div>
+            <div class="stat-grid__item">
+              <dt>Stabilimenti</dt>
+              <dd>15 in Italia + 8 all'estero</dd>
+            </div>
+            <div class="stat-grid__item">
+              <dt>Latte lavorato all'anno</dt>
+              <dd>~9 mln quintali</dd>
+            </div>
+            <div class="stat-grid__item">
+              <dt>Latte da soci Granlatte</dt>
+              <dd>97%</dd>
+            </div>
+            <div class="stat-grid__item">
+              <dt>Fatturato dall'estero</dt>
+              <dd>40%</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. IL MODELLO DI FILIERA — diagramma SVG inline -->
+    <section class="section section--alt" id="filiera" aria-labelledby="filiera-title">
+      <div class="section__inner">
+        <p class="section__eyebrow">Dal campo al frigorifero</p>
+        <h2 id="filiera-title">Il modello di filiera e i presìdi di sostenibilità</h2>
+        <p class="section__lead">
+          Sei tappe, dal campo al consumatore, e per ciascuna il presidio di sostenibilità che il
+          gruppo adotta: la responsabilità non si concentra in un solo passaggio, ma accompagna
+          tutta la filiera.
+        </p>
+
+        <!-- Diagramma disegnato a mano in SVG. role="img" con <title> e <desc>
+             lo fa leggere come un'immagine sola invece che forma per forma;
+             il viewBox lo rende elastico senza media query. -->
+        <svg
+          class="chain-diagram"
+          viewBox="0 0 1200 360"
+          role="img"
+          aria-labelledby="chain-diagram-title chain-diagram-desc"
+        >
+          <title id="chain-diagram-title">Filiera Granlatte–Granarolo, dal campo al consumatore</title>
+          <desc id="chain-diagram-desc">
+            Sei tappe collegate in sequenza: Campo, con presidio di gestione agronomica e
+            riduzione dei fertilizzanti chimici; Stalla, con presidio di benessere animale
+            certificato Classyfarm e Bonlatte e biometano da reflui; Raccolta, con presidio di
+            filiera tracciata e georeferenziata; Stabilimento, con presidio di efficientamento
+            energetico ed emissioni monitorate secondo il GHG Protocol; Distribuzione, con
+            presidio di riduzione della plastica e degli imballaggi; Consumatore, con presidio di
+            informazione su scadenze e riduzione dello spreco alimentare.
+          </desc>
+
+          <!-- Linea di collegamento fra le tappe -->
+          <line x1="80" y1="120" x2="1120" y2="120" stroke="var(--color-border)" stroke-width="3" />
+
+          <!-- Un <g> per tappa, tutte con la stessa struttura: cerchio,
+               icona, nome, didascalia -->
+
+          <!-- Tappa 1: Campo -->
+          <g transform="translate(80,120)">
+            <circle r="34" fill="var(--color-primary)" />
+            <g stroke="var(--color-primary-contrast)" stroke-width="2.5" fill="none" stroke-linecap="round">
+              <path d="M0,10 L0,-8" />
+              <path d="M0,-8 C-10,-8 -14,-16 -12,-24 C-4,-24 0,-16 0,-8 Z" fill="var(--color-primary-contrast)" stroke="none" />
+              <path d="M0,-2 C8,-2 12,-10 10,-16 C4,-16 0,-10 0,-2 Z" fill="var(--color-primary-contrast)" stroke="none" />
+            </g>
+            <text y="62" text-anchor="middle" class="chain-diagram__label">Campo</text>
+            <text y="82" text-anchor="middle" class="chain-diagram__caption">Gestione agronomica</text>
+          </g>
+
+          <!-- Tappa 2: Stalla -->
+          <g transform="translate(288,120)">
+            <circle r="34" fill="var(--color-primary)" />
+            <g stroke="var(--color-primary-contrast)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M-14,8 L-14,-6 L0,-16 L14,-6 L14,8 Z" />
+              <path d="M-6,8 L-6,-2 L6,-2 L6,8" />
+            </g>
+            <text y="62" text-anchor="middle" class="chain-diagram__label">Stalla</text>
+            <text y="82" text-anchor="middle" class="chain-diagram__caption">Benessere animale certificato</text>
+          </g>
+
+          <!-- Tappa 3: Raccolta -->
+          <g transform="translate(496,120)">
+            <circle r="34" fill="var(--color-primary)" />
+            <g stroke="var(--color-primary-contrast)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="-14" y="-6" width="28" height="16" rx="2" />
+              <path d="M-14,-6 L-9,-14 L9,-14 L14,-6" />
+              <circle cx="-8" cy="12" r="3" fill="var(--color-primary-contrast)" stroke="none" />
+              <circle cx="8" cy="12" r="3" fill="var(--color-primary-contrast)" stroke="none" />
+            </g>
+            <text y="62" text-anchor="middle" class="chain-diagram__label">Raccolta</text>
+            <text y="82" text-anchor="middle" class="chain-diagram__caption">Filiera tracciata</text>
+          </g>
+
+          <!-- Tappa 4: Stabilimento -->
+          <g transform="translate(704,120)">
+            <circle r="34" fill="var(--color-primary)" />
+            <g stroke="var(--color-primary-contrast)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M-14,10 L-14,-10 L-4,-16 L-4,-4 L6,-10 L6,2 L14,-4 L14,10 Z" />
+            </g>
+            <text y="62" text-anchor="middle" class="chain-diagram__label">Stabilimento</text>
+            <text y="82" text-anchor="middle" class="chain-diagram__caption">Energia ed emissioni monitorate</text>
+          </g>
+
+          <!-- Tappa 5: Distribuzione -->
+          <g transform="translate(912,120)">
+            <circle r="34" fill="var(--color-primary)" />
+            <g stroke="var(--color-primary-contrast)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="-16" y="-4" width="20" height="12" rx="1.5" />
+              <path d="M4,-4 L12,-4 L16,2 L16,8 L4,8 Z" />
+              <circle cx="-9" cy="10" r="3" fill="var(--color-primary-contrast)" stroke="none" />
+              <circle cx="10" cy="10" r="3" fill="var(--color-primary-contrast)" stroke="none" />
+            </g>
+            <text y="62" text-anchor="middle" class="chain-diagram__label">Distribuzione</text>
+            <text y="82" text-anchor="middle" class="chain-diagram__caption">Meno plastica, meno imballaggi</text>
+          </g>
+
+          <!-- Tappa 6: Consumatore -->
+          <g transform="translate(1120,120)">
+            <circle r="34" fill="var(--color-primary)" />
+            <g stroke="var(--color-primary-contrast)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="0" cy="-10" r="6" />
+              <path d="M-12,14 C-12,2 12,2 12,14" />
+            </g>
+            <text y="62" text-anchor="middle" class="chain-diagram__label">Consumatore</text>
+            <text y="82" text-anchor="middle" class="chain-diagram__caption">Contro lo spreco alimentare</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 6. I PILASTRI — accordion senza JS via <details>/<summary> -->
+    <section class="section" id="pilastri" aria-labelledby="pilastri-title">
+      <div class="section__inner">
+        <p class="section__eyebrow">Cinque aree, un unico bilancio</p>
+        <h2 id="pilastri-title">I pilastri della sostenibilità Granarolo</h2>
+
+        <!-- Accordion con <details>: funziona senza JS e annuncia da solo
+             se è aperto o chiuso. L'attributo name uguale su tutti e cinque
+             fa sì che aprirne uno chiuda il precedente. -->
+        <div class="pillar-grid">
+          <details class="pillar-card" id="pilastro-ambiente" name="pilastri" open>
+            <summary>
+              <span class="pillar-card__icon" aria-hidden="true">🌱</span>
+              Ambiente e clima
+            </summary>
+            <div class="pillar-card__body">
+              <p>
+                Granarolo rendiconta le proprie emissioni secondo il GHG Protocol (Scope 1 e 2) e
+                nel 2024 ha consumato 428.245 MWh di energia, di cui il 10% da fonti rinnovabili.
+                Dal 2018 il gruppo ha adottato un sistema di gestione ambientale certificato ISO
+                14001 e misura l'impatto di prodotto con certificazioni EPD. I dati completi sono
+                nei grafici <a href="#grafico-emissioni">Emissioni Scope 1 e Scope 2</a> e
+                <a href="#grafico-energia">Mix energetico 2024</a> più avanti in questa pagina.
+              </p>
+              <p>
+                L'obiettivo dichiarato per il 2030 è ridurre del 30% le emissioni di gas serra per
+                kg di latte prodotto dalla filiera, attraverso tre progetti paralleli: carbon
+                footprint alla stalla, riduzione della plastica, piano anti-spreco (dettagli nella
+                sezione <a href="#obiettivi">Obiettivi 2030</a>). I risultati raggiunti da questi
+                progetti sono nel grafico
+                <a href="#grafico-co2-progetti">CO2 risparmiata dai progetti del Piano 2030</a>.
+              </p>
+            </div>
+          </details>
+
+          <details class="pillar-card" id="pilastro-benessere-animale" name="pilastri">
+            <summary>
+              <span class="pillar-card__icon" aria-hidden="true">🐄</span>
+              Benessere animale e filiera
+            </summary>
+            <div class="pillar-card__body">
+              <p>
+                Tutte le stalle della filiera Granarolo-Granlatte sono certificate Classyfarm e
+                Bonlatte, quest'ultima una certificazione volontaria aggiuntiva rispetto agli
+                standard ministeriali. Un progetto di ricerca con le Università di Brescia, Milano
+                e Bologna ha misurato l'impronta carbonica alla stalla su un campione di aziende
+                rappresentative, ottenendo la certificazione EPD del latte crudo.
+              </p>
+              <p>
+                Il 97% del latte lavorato nel 2024 proviene dagli allevatori soci di Granlatte: la
+                filiera corta e cooperativa è, insieme, garanzia di tracciabilità e leva di
+                sostenibilità.
+              </p>
+            </div>
+          </details>
+
+          <details class="pillar-card" id="pilastro-persone" name="pilastri">
+            <summary>
+              <span class="pillar-card__icon" aria-hidden="true">👥</span>
+              Persone e comunità
+            </summary>
+            <div class="pillar-card__body">
+              <p>
+                Il gruppo contava 2.532 dipendenti nel 2024 (2.490 nel 2023). Nello stesso anno
+                sono state erogate 20.757 ore di formazione, oltre il 30% in più rispetto al 2023
+                (il dettaglio per genere è nel grafico
+                <a href="#grafico-formazione">Ore di formazione per genere, 2024</a>). Gli
+                infortuni sul lavoro sono scesi da 33 a 28 rispetto all'anno precedente, con zero
+                decessi registrati.
+              </p>
+              <p>
+                Oltre il 54% delle ore di formazione 2024 ha riguardato sicurezza e ambiente,
+                seguito da competenze manageriali e tecnico-specialistiche.
+              </p>
+            </div>
+          </details>
+
+          <details class="pillar-card" id="pilastro-prodotto" name="pilastri">
+            <summary>
+              <span class="pillar-card__icon" aria-hidden="true">🥛</span>
+              Prodotto e nutrizione
+            </summary>
+            <div class="pillar-card__body">
+              <p>
+                Sul fronte packaging, Granarolo ha convertito le referenze Yomo X2 e X4 al vasetto
+                di carta certificata PEFC, risparmiando nel solo 2024 oltre 367 tonnellate di
+                plastica e 772 tonnellate di CO2 equivalente. È in corso la sperimentazione di
+                R-PET opaco food grade ottenuto dal riciclo delle bottiglie bianche del latte.
+              </p>
+              <p>
+                Sul fronte anti-spreco, la collaborazione con Too Good To Go ha portato
+                pittogrammi informativi su oltre 48 milioni di confezioni nel 2024, per aiutare i
+                consumatori a valutare la freschezza del prodotto prima di scartarlo.
+              </p>
+            </div>
+          </details>
+
+          <details class="pillar-card" id="pilastro-governance" name="pilastri">
+            <summary>
+              <span class="pillar-card__icon" aria-hidden="true">🏛️</span>
+              Governance
+            </summary>
+            <div class="pillar-card__body">
+              <p>
+                In vista dell'allineamento a CSRD/ESRS, Granarolo ha condotto per il 2024 la sua
+                prima analisi di <strong>doppia materialità</strong>: rilevanza dell'impatto
+                (impact materiality) e rilevanza finanziaria (financial materiality), quest'ultima
+                validata anche in un confronto diretto con tre primari istituti di credito.
+              </p>
+              <p>
+                L'esito, in dieci temi ESRS classificati da E1 a G1, guida le priorità di
+                rendicontazione: è visualizzato nel grafico
+                <a href="#grafico-materialita">Matrice di doppia materialità</a> più avanti in
+                questa pagina.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. I NUMERI — dashboard Chart.js -->
+    <section class="section section--alt" id="numeri" aria-labelledby="numeri-title">
+      <div class="section__inner">
+        <p class="section__eyebrow">Dati dal bilancio 2024</p>
+        <h2 id="numeri-title">I numeri della sostenibilità</h2>
+        <p class="section__lead">
+          Cinque grafici, tutti costruiti sui dati pubblicati nel bilancio 2024. Sotto ogni
+          grafico è indicata la fonte puntuale, con il riferimento alla pagina del documento
+          originale da cui il dato proviene.
+        </p>
+
+        <div class="chart-grid">
+
+          <!-- Grafico 1: linea, emissioni Scope 1+2 -->
+          <figure class="chart-card" id="grafico-emissioni">
+            <figcaption>
+              <h3>Emissioni Scope 1 e Scope 2, stabilimenti italiani</h3>
+              <p class="chart-card__meta">t CO2 eq · triennio 2022-2024 · GRI 305-1 / 305-2</p>
+              <p class="chart-card__related">Approfondisci nel pilastro <a href="#pilastro-ambiente">Ambiente e clima</a>.</p>
+            </figcaption>
+            <div class="chart-card__canvas-wrap">
+              <canvas id="chart-emissioni" role="img" aria-label="Grafico a linee: emissioni Scope 1 e Scope 2 location-based, in tonnellate di CO2 equivalente, dal 2022 al 2024, entrambe in crescita">
+                Il tuo browser non può mostrare questo grafico. Consulta la tabella dati qui sotto.
+              </canvas>
+            </div>
+            <table class="visually-hidden">
+              <caption>Emissioni Scope 1 e Scope 2 (location-based), t CO2 eq, stabilimenti italiani</caption>
+              <thead>
+                <tr><th scope="col">Anno</th><th scope="col">Scope 1</th><th scope="col">Scope 2 (location-based)</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">2022</th><td>42.892</td><td>79.528</td></tr>
+                <tr><th scope="row">2023</th><td>44.602</td><td>82.413</td></tr>
+                <tr><th scope="row">2024</th><td>46.435</td><td>84.861</td></tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <!-- Grafico 2: doughnut, mix energetico -->
+          <figure class="chart-card" id="grafico-energia">
+            <figcaption>
+              <h3>Mix energetico 2024</h3>
+              <p class="chart-card__meta">MWh per fonte · ESRS E1-5</p>
+              <p class="chart-card__related">Approfondisci nel pilastro <a href="#pilastro-ambiente">Ambiente e clima</a>.</p>
+            </figcaption>
+            <div class="chart-card__canvas-wrap">
+              <canvas id="chart-energia" role="img" aria-label="Grafico a ciambella: consumo di energia 2024 per fonte. Fonti fossili 385.072 MWh, pari a circa il 90% del totale; fonti rinnovabili 42.982 MWh, circa il 10%; fonti nucleari 191 MWh, quota trascurabile">
+                Il tuo browser non può mostrare questo grafico. Consulta la tabella dati qui sotto.
+              </canvas>
+            </div>
+            <table class="visually-hidden">
+              <caption>Consumo di energia 2024 per fonte, MWh</caption>
+              <thead><tr><th scope="col">Fonte</th><th scope="col">MWh</th><th scope="col">Quota</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Fonti fossili</th><td>385.072,4</td><td>89,9%</td></tr>
+                <tr><th scope="row">Fonti rinnovabili</th><td>42.981,7</td><td>10,0%</td></tr>
+                <tr><th scope="row">Fonti nucleari</th><td>190,7</td><td>0,04%</td></tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <!-- Grafico 3: barre orizzontali, risparmio CO2 per progetto -->
+          <figure class="chart-card" id="grafico-co2-progetti">
+            <figcaption>
+              <h3>CO2 risparmiata dai progetti del Piano 2030</h3>
+              <p class="chart-card__meta">t CO2 eq, raggiunto vs. target · pag. 23 del bilancio 2024</p>
+              <p class="chart-card__related">Approfondisci nel pilastro <a href="#pilastro-ambiente">Ambiente e clima</a>.</p>
+            </figcaption>
+            <div class="chart-card__canvas-wrap">
+              <canvas id="chart-packaging" role="img" aria-label="Grafico a barre orizzontali: risparmio di CO2 per progetto. Riduzione della plastica, 5.600 tonnellate raggiunte nel periodo 2018-2024 contro un target di 1.000 tonnellate nel periodo 2025-2026. Piano anti-spreco, 19.000 tonnellate raggiunte nel periodo 2022-2024 contro un target di 12.000 tonnellate nel periodo 2025-2026">
+                Il tuo browser non può mostrare questo grafico. Consulta la tabella dati qui sotto.
+              </canvas>
+            </div>
+            <table class="visually-hidden">
+              <caption>CO2 risparmiata per progetto, t CO2 eq</caption>
+              <thead><tr><th scope="col">Progetto</th><th scope="col">Raggiunto</th><th scope="col">Target successivo</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Riduzione plastica (2018-2024 / target 2025-2026)</th><td>5.600</td><td>1.000</td></tr>
+                <tr><th scope="row">Piano anti-spreco (2022-2024 / target 2025-2026)</th><td>19.000</td><td>12.000</td></tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <!-- Grafico 4: barre verticali, formazione per genere.
+               Sta qui per finire affiancato a "CO2 risparmiata" nella
+               griglia a 2 colonne. -->
+          <figure class="chart-card" id="grafico-formazione">
+            <figcaption>
+              <h3>Ore di formazione per genere, 2024</h3>
+              <p class="chart-card__meta">Ore totali: 20.757 · GRI 404-1</p>
+              <p class="chart-card__related">Approfondisci nel pilastro <a href="#pilastro-persone">Persone e comunità</a>.</p>
+            </figcaption>
+            <div class="chart-card__canvas-wrap">
+              <canvas id="chart-formazione" role="img" aria-label="Grafico a barre verticali: ore di formazione erogate nel 2024 per genere. Uomini 4.550 ore, donne 16.207 ore, su un totale di 20.757 ore">
+                Il tuo browser non può mostrare questo grafico. Consulta la tabella dati qui sotto.
+              </canvas>
+            </div>
+            <table class="visually-hidden">
+              <caption>Ore di formazione 2024 per genere</caption>
+              <thead><tr><th scope="col">Genere</th><th scope="col">Ore</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Uomini</th><td>4.550</td></tr>
+                <tr><th scope="row">Donne</th><td>16.207</td></tr>
+              </tbody>
+            </table>
+          </figure>
+
+          <!-- Grafico 5: scatter, matrice di materialità -->
+          <figure class="chart-card chart-card--wide" id="grafico-materialita">
+            <figcaption>
+              <h3>Matrice di doppia materialità</h3>
+              <p class="chart-card__meta">Impact materiality vs. financial materiality, 10 temi ESRS · pag. 44 del bilancio 2024</p>
+              <p class="chart-card__related">Approfondisci nel pilastro <a href="#pilastro-governance">Governance</a>.</p>
+            </figcaption>
+            <div class="chart-card__canvas-wrap">
+              <canvas id="chart-materialita" role="img" aria-label="Grafico a dispersione: dieci temi ESRS posizionati per rilevanza d'impatto e rilevanza finanziaria, entrambe su scala da 2,5 a 5. Condotta delle imprese è il tema con i valori più alti su entrambi gli assi; Inquinamento e Biodiversità hanno i valori più bassi. Consulta la tabella per le coordinate complete di ogni tema">
+                Il tuo browser non può mostrare questo grafico. Consulta la tabella dati qui sotto.
+              </canvas>
+            </div>
+            <table class="visually-hidden">
+              <caption>Matrice di doppia materialità: coordinate per tema ESRS (scala 2,5-5,0)</caption>
+              <thead><tr><th scope="col">Tema</th><th scope="col">Impact materiality</th><th scope="col">Financial materiality</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">G1 — Condotta delle imprese</th><td>3,8</td><td>3,7</td></tr>
+                <tr><th scope="row">S3 — Comunità interessate</th><td>3,65</td><td>3,05</td></tr>
+                <tr><th scope="row">E5 — Economia circolare</th><td>3,6</td><td>3,2</td></tr>
+                <tr><th scope="row">E1 — Cambiamenti climatici</th><td>3,5</td><td>3,4</td></tr>
+                <tr><th scope="row">S4 — Consumatori e utilizzatori finali</th><td>3,5</td><td>3,05</td></tr>
+                <tr><th scope="row">S2 — Lavoratori nella catena del valore</th><td>3,45</td><td>2,8</td></tr>
+                <tr><th scope="row">E3 — Acqua e risorse marine</th><td>3,3</td><td>3,15</td></tr>
+                <tr><th scope="row">S1 — Forza lavoro propria</th><td>3,3</td><td>3,0</td></tr>
+                <tr><th scope="row">E4 — Biodiversità ed ecosistemi</th><td>3,15</td><td>2,6</td></tr>
+                <tr><th scope="row">E2 — Inquinamento</th><td>3,0</td><td>3,1</td></tr>
+              </tbody>
+            </table>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. OBIETTIVI AL 2030 -->
+    <section class="section" id="obiettivi" aria-labelledby="obiettivi-title">
+      <div class="section__inner">
+        <p class="section__eyebrow">La rotta dichiarata dal gruppo</p>
+        <h2 id="obiettivi-title">Obiettivi al 2030</h2>
+        <p class="section__lead">
+          Il bilancio 2024 non dichiara un anno base per l'obiettivo generale. Lo riportiamo così
+          come è stato pubblicato, senza aggiungere un riferimento che la fonte non dà.
+        </p>
+
+        <ul class="timeline">
+          <li class="timeline__item timeline__item--highlight">
+            <span class="timeline__icon" aria-hidden="true">🎯</span>
+            <h3>Obiettivo del Piano 2030</h3>
+            <p>
+              Ridurre le emissioni di gas a effetto serra del <strong>30%</strong> per kg di latte
+              prodotto dalla filiera, entro il 2030.
+            </p>
+            <p class="timeline__note">SDG collegati: 12 (consumo e produzione responsabili), 13 (lotta al cambiamento climatico), 17 (partnership per gli obiettivi).</p>
+          </li>
+
+          <li class="timeline__item">
+            <span class="timeline__icon" aria-hidden="true">🐄</span>
+            <h3>Benessere animale alla stalla</h3>
+            <p>Target: <strong>−30.000 t CO2 eq/anno</strong>. Carbon footprint certificata EPD: 1,47 kg CO2 eq/l (latte convenzionale), 1,03 kg CO2 eq/l (latte biologico).</p>
+          </li>
+
+          <li class="timeline__item">
+            <span class="timeline__icon" aria-hidden="true">♻️</span>
+            <h3>Riduzione della plastica</h3>
+            <p><strong>−5.600 t CO2 eq</strong> raggiunte nel periodo 2018-2024. Target successivo: <strong>−1.000 t CO2 eq</strong> nel periodo 2025-2026.</p>
+          </li>
+
+          <li class="timeline__item">
+            <span class="timeline__icon" aria-hidden="true">🥡</span>
+            <h3>Piano anti-spreco</h3>
+            <p><strong>−19.000 t CO2 eq</strong> raggiunte nel periodo 2022-2024, riducendo i resi da mercato e piattaforma. Target successivo: <strong>−12.000 t CO2 eq</strong> nel periodo 2025-2026.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9. ARCHIVIO REPORT -->
+    <section class="section section--alt" id="archivio" aria-labelledby="archivio-title">
+      <div class="section__inner">
+        <p class="section__eyebrow">Sei anni di rendicontazione, dal 2019 al 2024</p>
+        <h2 id="archivio-title">Archivio dei bilanci di sostenibilità</h2>
+        <p class="section__lead">
+          Nove documenti, dal 2019 al 2024, tutti consultabili e scaricabili direttamente da
+          questa pagina, ciascuno con il rimando alla fonte ufficiale da cui proviene
+          (vedi <a href="#fonti">Fonti</a>).
+        </p>
+
+        <!-- Il form non ha action: senza JS selezionare un'opzione non fa
+             nulla e restano visibili tutte le card. Con JS ci pensa app.js. -->
+        <form class="archive-filter" id="archive-filter">
+          <fieldset>
+            <legend>Filtra l'archivio</legend>
+            <div class="archive-filter__row">
+              <label for="filter-anno">Anno</label>
+              <select id="filter-anno" name="anno">
+                <option value="">Tutti</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+              </select>
+
+              <label for="filter-tipo">Tipo</label>
+              <select id="filter-tipo" name="tipo">
+                <option value="">Tutti</option>
+                <option value="integrale">Integrale</option>
+                <option value="sintesi">Sintesi</option>
+              </select>
+
+              <label for="filter-lingua">Lingua</label>
+              <select id="filter-lingua" name="lingua">
+                <option value="">Tutte</option>
+                <option value="it">Italiano</option>
+                <option value="en">Inglese</option>
+              </select>
+            </div>
+          </fieldset>
+        </form>
+
+        <!-- aria-live: il conteggio aggiornato viene letto senza spostare
+             il focus -->
+        <p class="archive-count" id="archive-count" aria-live="polite">9 documenti disponibili</p>
+
+        <div class="report-grid" id="report-grid">
+
+          <!-- I data-anno / data-tipo / data-lingua sono quelli che legge il
+               filtro in app.js. Le 9 card hanno tutte la stessa struttura. -->
+          <article class="report-card" data-anno="2024" data-tipo="integrale" data-lingua="it">
+            <img class="report-card__image" src="assets/img/cover-2024-integrale.webp" width="400" height="565" loading="lazy" alt="Copertina del bilancio di sostenibilità 2024 di gruppo Granarolo" />
+            <div class="report-card__body">
+              <div class="report-card__header">
+                <div>
+                  <span class="report-card__label">Documento</span>
+                  <h3>bilancio di sostenibilità 2024</h3>
+                </div>
+                <span class="report-card__year">2024</span>
+              </div>
+              <div class="report-card__desc-wrap">
+                <span class="report-card__label">Dettagli</span>
+                <p class="report-card__meta">Integrale · Italiano · 280 pagine · 18,1 MB · GRI Standards, percorso CSRD/ESRS</p>
+              </div>
+              <div class="report-card__footer">
+                <div class="report-card__actions">
+                  <a class="button button--primary button--small" href="report/granarolo-bilancio-sostenibilita-2024-it.pdf" download>
+                    Scarica PDF <span class="visually-hidden">(18,1 MB, italiano)</span>
+                  </a>
+                  <a class="button button--ghost button--small report-card__preview" href="report/granarolo-bilancio-sostenibilita-2024-it.pdf" target="_blank" rel="noopener">
+                    Sfoglia
+                  </a>
+                </div>
+                <a class="report-card__source" href="https://www.gruppogranarolo.it/chi-siamo/csr-report-2024">Pagina ufficiale Granarolo ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="report-card" data-anno="2023" data-tipo="integrale" data-lingua="it">
+            <img class="report-card__image" src="assets/img/cover-2023-integrale.webp" width="400" height="565" loading="lazy" alt="Copertina del bilancio di sostenibilità 2023 di gruppo Granarolo" />
+            <div class="report-card__body">
+              <div class="report-card__header">
+                <div>
+                  <span class="report-card__label">Documento</span>
+                  <h3>bilancio di sostenibilità 2023</h3>
+                </div>
+                <span class="report-card__year">2023</span>
+              </div>
+              <div class="report-card__desc-wrap">
+                <span class="report-card__label">Dettagli</span>
+                <p class="report-card__meta">Integrale · Italiano · 280 pagine · 16,7 MB · GRI Standards</p>
+              </div>
+              <div class="report-card__footer">
+                <div class="report-card__actions">
+                  <a class="button button--primary button--small" href="report/granarolo-bilancio-sostenibilita-2023-it.pdf" download>
+                    Scarica PDF <span class="visually-hidden">(16,7 MB, italiano)</span>
+                  </a>
+                  <a class="button button--ghost button--small report-card__preview" href="report/granarolo-bilancio-sostenibilita-2023-it.pdf" target="_blank" rel="noopener">
+                    Sfoglia
+                  </a>
+                </div>
+                <a class="report-card__source" href="https://www.gruppogranarolo.it/chi-siamo/csr-report-2023">Pagina ufficiale Granarolo ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="report-card" data-anno="2023" data-tipo="sintesi" data-lingua="it">
+            <img class="report-card__image" src="assets/img/cover-2023-sintesi.webp" width="400" height="283" loading="lazy" alt="Copertina della Sintesi SDGs del bilancio di sostenibilità 2023" />
+            <div class="report-card__body">
+              <div class="report-card__header">
+                <div>
+                  <span class="report-card__label">Documento</span>
+                  <h3>Il contributo agli SDGs — Sintesi 2023</h3>
+                </div>
+                <span class="report-card__year">2023</span>
+              </div>
+              <div class="report-card__desc-wrap">
+                <span class="report-card__label">Dettagli</span>
+                <p class="report-card__meta">Sintesi · Italiano · 15 pagine · 3,0 MB · GRI Standards</p>
+              </div>
+              <div class="report-card__footer">
+                <div class="report-card__actions">
+                  <a class="button button--primary button--small" href="report/granarolo-sintesi-sdgs-2023-it.pdf" download>
+                    Scarica PDF <span class="visually-hidden">(3,0 MB, italiano)</span>
+                  </a>
+                  <a class="button button--ghost button--small report-card__preview" href="report/granarolo-sintesi-sdgs-2023-it.pdf" target="_blank" rel="noopener">
+                    Sfoglia
+                  </a>
+                </div>
+                <a class="report-card__source" href="https://www.gruppogranarolo.it/chi-siamo/csr-report-2023">Pagina ufficiale Granarolo ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="report-card" data-anno="2023" data-tipo="sintesi" data-lingua="en">
+            <img class="report-card__image" src="assets/img/cover-2023-summary-en.webp" width="400" height="283" loading="lazy" alt="Cover of the 2023 Sustainability Report Summary" />
+            <div class="report-card__body">
+              <div class="report-card__header">
+                <div>
+                  <span class="report-card__label">Documento</span>
+                  <h3>Sustainability Report 2023 — Summary</h3>
+                </div>
+                <span class="report-card__year">2023</span>
+              </div>
+              <div class="report-card__desc-wrap">
+                <span class="report-card__label">Dettagli</span>
+                <p class="report-card__meta">Sintesi · Inglese · 15 pagine · 1,8 MB · GRI Standards</p>
+              </div>
+              <div class="report-card__footer">
+                <div class="report-card__actions">
+                  <a class="button button--primary button--small" href="report/granarolo-summary-2023-en.pdf" download>
+                    Scarica PDF <span class="visually-hidden">(1,8 MB, inglese)</span>
+                  </a>
+                  <a class="button button--ghost button--small report-card__preview" href="report/granarolo-summary-2023-en.pdf" target="_blank" rel="noopener">
+                    Sfoglia
+                  </a>
+                </div>
+                <a class="report-card__source" href="https://www.granarologroup.com/">Sito internazionale Granarolo ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="report-card" data-anno="2022" data-tipo="integrale" data-lingua="it">
+            <img class="report-card__image" src="assets/img/cover-2022-integrale.webp" width="400" height="565" loading="lazy" alt="Copertina del bilancio di sostenibilità 2022 di gruppo Granarolo" />
+            <div class="report-card__body">
+              <div class="report-card__header">
+                <div>
+                  <span class="report-card__label">Documento</span>
+                  <h3>bilancio di sostenibilità 2022</h3>
+                </div>
+                <span class="report-card__year">2022</span>
+              </div>
+              <div class="report-card__desc-wrap">
+                <span class="report-card__label">Dettagli</span>
+                <p class="report-card__meta">Integrale · Italiano · 132 pagine · 14,5 MB · GRI Standards</p>
+              </div>
+              <div class="report-card__footer">
+                <div class="report-card__actions">
+                  <a class="button button--primary button--small" href="report/granarolo-bilancio-sostenibilita-2022-it.pdf" download>
+                    Scarica PDF <span class="visually-hidden">(14,5 MB, italiano)</span>
+                  </a>
+                  <a class="button button--ghost button--small report-card__preview" href="report/granarolo-bilancio-sostenibilita-2022-it.pdf" target="_blank" rel="noopener">
+                    Sfoglia
+                  </a>
+                </div>
+                <a class="report-card__source" href="https://www.gruppogranarolo.it/csr-report-2022">Pagina ufficiale Granarolo ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="report-card" data-anno="2021" data-tipo="integrale" data-lingua="it">
+            <img class="report-card__image" src="assets/img/cover-2021-integrale.webp" width="400" height="565" loading="lazy" alt="Copertina del bilancio di sostenibilità 2021 di gruppo Granarolo" />
+            <div class="report-card__body">
+              <div class="report-card__header">
+                <div>
+                  <span class="report-card__label">Documento</span>
+                  <h3>bilancio di sostenibilità 2021</h3>
+                </div>
+                <span class="report-card__year">2021</span>
+              </div>
+              <div class="report-card__desc-wrap">
+                <span class="report-card__label">Dettagli</span>
+                <p class="report-card__meta">Integrale · Italiano · 126 pagine · 9,6 MB · GRI Standards</p>
+              </div>
+              <div class="report-card__footer">
+                <div class="report-card__actions">
+                  <a class="button button--primary button--small" href="report/granarolo-bilancio-sostenibilita-2021-it.pdf" download>
+                    Scarica PDF <span class="visually-hidden">(9,6 MB, italiano)</span>
+                  </a>
+                  <a class="button button--ghost button--small report-card__preview" href="report/granarolo-bilancio-sostenibilita-2021-it.pdf" target="_blank" rel="noopener">
+                    Sfoglia
+                  </a>
+                </div>
+                <a class="report-card__source" href="https://www.improntaetica.org/wp-content/uploads/2022/08/granarolo-bilancio-di-sostenibilita-2021.pdf">Copia via Impronta Etica ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="report-card" data-anno="2020" data-tipo="integrale" data-lingua="it">
+            <img class="report-card__image" src="assets/img/cover-2020-integrale.webp" width="400" height="565" loading="lazy" alt="Copertina del bilancio di sostenibilità 2020 di gruppo Granarolo" />
+            <div class="report-card__body">
+              <div class="report-card__header">
+                <div>
+                  <span class="report-card__label">Documento</span>
+                  <h3>bilancio di sostenibilità 2020</h3>
+                </div>
+                <span class="report-card__year">2020</span>
+              </div>
+              <div class="report-card__desc-wrap">
+                <span class="report-card__label">Dettagli</span>
+                <p class="report-card__meta">Integrale · Italiano · 118 pagine · 11,4 MB · GRI Standards</p>
+              </div>
+              <div class="report-card__footer">
+                <div class="report-card__actions">
+                  <a class="button button--primary button--small" href="report/granarolo-bilancio-sostenibilita-2020-it.pdf" download>
+                    Scarica PDF <span class="visually-hidden">(11,4 MB, italiano)</span>
+                  </a>
+                  <a class="button button--ghost button--small report-card__preview" href="report/granarolo-bilancio-sostenibilita-2020-it.pdf" target="_blank" rel="noopener">
+                    Sfoglia
+                  </a>
+                </div>
+                <a class="report-card__source" href="https://www.gruppogranarolo.it">Pagina ufficiale Granarolo ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="report-card" data-anno="2019" data-tipo="integrale" data-lingua="it">
+            <img class="report-card__image" src="assets/img/cover-2019-integrale.webp" width="400" height="565" loading="lazy" alt="Copertina del bilancio di sostenibilità 2019 di gruppo Granarolo" />
+            <div class="report-card__body">
+              <div class="report-card__header">
+                <div>
+                  <span class="report-card__label">Documento</span>
+                  <h3>bilancio di sostenibilità 2019</h3>
+                </div>
+                <span class="report-card__year">2019</span>
+              </div>
+              <div class="report-card__desc-wrap">
+                <span class="report-card__label">Dettagli</span>
+                <p class="report-card__meta">Integrale · Italiano · 111 pagine · 6,4 MB · GRI Standards</p>
+              </div>
+              <div class="report-card__footer">
+                <div class="report-card__actions">
+                  <a class="button button--primary button--small" href="report/granarolo-bilancio-sostenibilita-2019-it.pdf" download>
+                    Scarica PDF <span class="visually-hidden">(6,4 MB, italiano)</span>
+                  </a>
+                  <a class="button button--ghost button--small report-card__preview" href="report/granarolo-bilancio-sostenibilita-2019-it.pdf" target="_blank" rel="noopener">
+                    Sfoglia
+                  </a>
+                </div>
+                <a class="report-card__source" href="https://www.improntaetica.org/wp-content/uploads/2020/07/bilancio-di-sostenibilit%C3%A0-2019_Granarolo.pdf">Copia via Impronta Etica ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="report-card" data-anno="2019" data-tipo="sintesi" data-lingua="it">
+            <img class="report-card__image" src="assets/img/cover-2019-sintesi.webp" width="400" height="283" loading="lazy" alt="Copertina della Sintesi del bilancio di sostenibilità 2019" />
+            <div class="report-card__body">
+              <div class="report-card__header">
+                <div>
+                  <span class="report-card__label">Documento</span>
+                  <h3>Sintesi del bilancio di sostenibilità 2019</h3>
+                </div>
+                <span class="report-card__year">2019</span>
+              </div>
+              <div class="report-card__desc-wrap">
+                <span class="report-card__label">Dettagli</span>
+                <p class="report-card__meta">Sintesi · Italiano · 11 pagine · 1,9 MB · GRI Standards</p>
+              </div>
+              <div class="report-card__footer">
+                <div class="report-card__actions">
+                  <a class="button button--primary button--small" href="report/granarolo-sintesi-2019-it.pdf" download>
+                    Scarica PDF <span class="visually-hidden">(1,9 MB, italiano)</span>
+                  </a>
+                  <a class="button button--ghost button--small report-card__preview" href="report/granarolo-sintesi-2019-it.pdf" target="_blank" rel="noopener">
+                    Sfoglia
+                  </a>
+                </div>
+                <a class="report-card__source" href="https://www.gruppogranarolo.it">Pagina ufficiale Granarolo ↗</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Un solo dialog per tutti i pulsanti "Sfoglia": app.js gli cambia
+         dentro il PDF di volta in volta. <dialog> gestisce da sé il focus e
+         la chiusura con Esc. -->
+    <dialog id="preview-dialog" class="preview-dialog" aria-labelledby="preview-dialog-title">
+      <div class="preview-dialog__header">
+        <h2 id="preview-dialog-title">Anteprima documento</h2>
+        <button type="button" class="preview-dialog__close" id="preview-dialog-close">
+          <span class="visually-hidden">Chiudi anteprima</span>
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <!-- <object> e non <iframe>: se il browser non sa mostrare il PDF,
+           quello che c'è dentro i tag fa da fallback da solo.
+           Nessun data= all'inizio perché un data vuoto non è valido: lo
+           mette e lo toglie app.js. -->
+      <object id="preview-dialog-object" type="application/pdf" class="preview-dialog__object">
+        <p class="preview-dialog__fallback">
+          Il tuo browser non può mostrare il documento in questa finestra.
+          <a id="preview-dialog-fallback-link" href="#">Apri il documento in una nuova scheda ↗</a>
+        </p>
+      </object>
+    </dialog>
+
+    <!-- 10. METODOLOGIA, FONTI, ACCESSIBILITÀ -->
+    <section class="section" id="fonti" aria-labelledby="fonti-title">
+      <div class="section__inner">
+        <p class="section__eyebrow">Trasparenza sui dati</p>
+        <h2 id="fonti-title">Metodologia, fonti e accessibilità</h2>
+
+        <div class="info-columns">
+          <div>
+            <h3>Standard di rendicontazione</h3>
+            <p>
+              I bilanci di sostenibilità Granarolo dal 2019 al 2023 sono redatti secondo i
+              <strong>GRI Standards</strong>. Il bilancio 2024 mantiene i GRI Standards e avvia il
+              percorso di allineamento a <strong>CSRD</strong> (Corporate Sustainability Reporting
+              Directive) ed <strong>ESRS</strong> (European Sustainability Reporting Standards),
+              introducendo per la prima volta l'analisi di doppia materialità documentata nella
+              sezione <a href="#numeri">I numeri</a> di questa pagina.
+            </p>
+
+            <h3>Attribuzione dei documenti</h3>
+            <p>
+              Tutti i documenti di questo archivio sono copyright © gruppo Granarolo S.p.A. e
+              vengono riproposti per uso esclusivamente didattico, nell'ambito di un Project Work
+              universitario, con il rimando alla pagina ufficiale accanto a ogni scheda. Le
+              edizioni 2019 e 2021, non più disponibili sul sito Granarolo, sono state recuperate
+              dall'archivio pubblico di Impronta Etica.
+            </p>
+          </div>
+
+          <div>
+            <h3>Dichiarazione di accessibilità</h3>
+            <p>
+              L'obiettivo è che questa pagina sia utilizzabile dal maggior numero possibile di
+              persone, con qualsiasi dispositivo:
+            </p>
+            <ul class="check-list">
+              <li>Si naviga tutta da tastiera e si vede sempre dove ci si trova.</li>
+              <li>I lettori di schermo per persone non vedenti o ipovedenti la leggono correttamente.</li>
+              <li>I colori sono stati scelti con un contrasto sufficiente anche in piena luce.</li>
+              <li>Sotto ogni grafico c'è una tabella con gli stessi numeri, per chi le immagini non le vede.</li>
+              <li>L'anteprima dei documenti si chiude quando si vuole con Esc e riporta alla scheda di partenza.</li>
+              <li>Anche con il browser configurato in modo molto restrittivo restano leggibili tutti i contenuti e scaricabili tutti i report.</li>
+              <li>Tema chiaro o scuro e animazioni ridotte seguono le preferenze già impostate sul dispositivo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 11. FOOTER -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>
+        Sito realizzato per finalità didattiche. Project Work "Tecnologia web per la
+        sostenibilità d'impresa", CdS Informatica per le Aziende Digitali (L-31).
+      </p>
+      <p>
+        Dati e documenti: © gruppo Granarolo S.p.A. ·
+        <a href="https://www.gruppogranarolo.it">gruppogranarolo.it</a>
+      </p>
+      <p><a href="#top">Torna all'inizio ↑</a></p>
+    </div>
+  </footer>
+
+  <!-- Chart.js è in locale, non da CDN, così il sito funziona anche offline.
+       defer su tutti e tre: non bloccano il caricamento e l'ordine resta
+       comunque questo. -->
+  <script src="vendor/chart.umd.min.js" defer></script>
+  <script src="js/charts.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

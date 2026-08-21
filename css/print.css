@@ -1,0 +1,99 @@
+/* Foglio di stampa, caricato con media="print".
+   Obiettivo: una pagina leggibile su carta, senza sfondi e senza comandi
+   che stampati non servono a niente. */
+
+/* Via tutto ciò che su carta non è cliccabile */
+.site-header,
+.skip-link,
+.nav-toggle,
+.hero__actions,
+.archive-filter,
+.archive-count,
+.report-card__actions,
+.preview-dialog,
+.pillar-card summary::after {
+  display: none !important;
+}
+
+/* I pilastri chiusi non devono sparire dalla stampa */
+.pillar-card {
+  break-inside: avoid;
+}
+.pillar-card__body {
+  display: block !important;
+}
+
+* {
+  background: transparent !important;
+  color: #000 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+body {
+  font-size: 11pt;
+  line-height: 1.4;
+}
+
+a {
+  text-decoration: underline;
+}
+/* Su carta il link non si clicca: stampo l'indirizzo accanto.
+   Solo i link esterni, le ancore interne non servono. */
+a[href^="http"]::after {
+  content: " (" attr(href) ")";
+  font-size: 0.85em;
+  word-break: break-all;
+}
+
+.section {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.report-card,
+.chart-card,
+.timeline__item,
+.pillar-card,
+.stat-grid__item {
+  border: 1px solid #999 !important;
+  break-inside: avoid;
+}
+
+/* Card report compatte: copertina piccola a sinistra, altezza libera
+   (in stampa l'altezza fissa da schermo sprecherebbe mezza pagina). */
+.report-card {
+  flex-direction: row;
+  height: auto;
+}
+.report-card__image {
+  width: 5rem;
+  height: auto;
+  aspect-ratio: 3 / 4;
+}
+
+h1, h2, h3 {
+  break-after: avoid;
+}
+
+/* Il canvas dei grafici non si stampa: al suo posto mostro la tabella dati
+   che in pagina è nascosta agli occhi ma già presente nell'HTML. */
+.chart-card__canvas-wrap {
+  display: none;
+}
+.chart-card table.visually-hidden {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  border: 1px solid #999;
+}
+.chart-card table.visually-hidden th,
+.chart-card table.visually-hidden td {
+  border: 1px solid #999;
+  padding: 0.25rem 0.5rem;
+  text-align: left;
+}

@@ -1,0 +1,758 @@
+/* Layout e componenti, nell'ordine in cui compaiono in index.html.
+   Mobile-first: le regole senza media query valgono da 0px, i min-width
+   aggiungono quello che serve sugli schermi grandi.
+   Colori e misure vengono tutti da tokens.css. */
+
+/* ---- Base tipografica ---- */
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+h1, h2, h3, h4 {
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--font-size-3xl); }
+h2 { font-size: var(--font-size-2xl); }
+h3 { font-size: var(--font-size-lg); }
+
+p { max-width: 68ch; }
+
+a {
+  color: var(--color-primary);
+}
+a:hover { color: var(--color-primary-dark); }
+
+code, kbd {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.9em;
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.4em;
+}
+
+/* :focus-visible e non :focus: l'anello lo vede chi naviga da tastiera,
+   non chi clicca col mouse. */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Utility ---- */
+
+/* Nasconde agli occhi ma non agli screen reader. 1px e non 0: a dimensione
+   zero alcuni screen reader saltano il contenuto. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: var(--space-4);
+  z-index: 100;
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  padding: var(--space-3) var(--space-5);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  font-weight: var(--font-weight-medium);
+  /* -100% e non un top negativo fisso: con "top: -3rem" restava un filo di
+     verde visibile in alto, perché il link è alto ~53px e non 48. */
+  transform: translateY(-100%);
+  transition: transform var(--transition-fast);
+}
+/* Compare solo al focus: invisibile col mouse, primo stop da tastiera */
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+.button--primary {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+.button--primary:hover { background: var(--color-primary-dark); color: var(--color-primary-contrast); }
+.button--ghost {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.button--ghost:hover { background: var(--color-surface-alt); }
+.button--small {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+}
+
+/* ---- Layout di pagina ---- */
+
+.section__inner,
+.site-header__inner,
+.site-footer__inner,
+.hero__inner {
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+}
+
+.section {
+  padding-top: var(--space-9);
+  padding-bottom: var(--space-9);
+}
+.section--alt {
+  background: var(--color-surface-alt);
+}
+.section__eyebrow {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-2);
+}
+.section__lead {
+  max-width: 60rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.section h2 { margin-bottom: var(--space-5); }
+
+/* ---- Header sticky ---- */
+.site-header {
+  position: sticky;
+  /* -1px e non 0: con top:0 Chrome arrotonda male durante lo scroll e per
+     un istante si vede lo sfondo della pagina sopra l'header */
+  top: -1px;
+  z-index: 50;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  /* Stesso problema: mettendo l'header su un layer suo il micro-scatto
+     durante lo scroll sparisce */
+  transform: translateZ(0);
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Distanza minima fra logo e menu: con la finestra stretta, poco sopra il
+     breakpoint desktop, altrimenti si toccano prima di andare a capo */
+  gap: var(--space-6);
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+.brand__logo {
+  display: block;
+  /* Il logo è largo (~2.24:1): fisso l'altezza e lascio che la larghezza
+     segua da sola */
+  height: 2.75rem;
+  width: auto;
+  flex-shrink: 0;
+}
+.brand__sub {
+  display: block;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Il bottone del menu compare solo se JS ha tolto "no-js" da <html>:
+   senza JS resta nascosto e il menu è sempre aperto. */
+.nav-toggle {
+  display: none;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+}
+.js .nav-toggle {
+  display: inline-flex;
+}
+
+.site-nav ul {
+  /* Il reset toglie i pallini solo agli ul con una classe, e questo non ce
+     l'ha (la classe sta sul <nav>). Senza queste righe i pallini finivano
+     sopra il testo dei link: "Il contest•o", "La filie•a". */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  /* Più spazio fra le righe che fra le colonne: se i link vanno a capo non
+     devono sembrare incollati a quelli sopra */
+  gap: var(--space-3) var(--space-2);
+}
+.site-nav a {
+  display: inline-block;
+  /* Con 4px di padding i link erano troppo attaccati fra loro; 12px danno
+     aria e un'area di tocco più comoda */
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  border-bottom: 2px solid transparent;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-nav a.is-current {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  /* Oltre al sottolineato, uno sfondo leggero: così la voce attiva si legge
+     come un blocco e non come una parola qualsiasi */
+  background: var(--color-surface-alt);
+}
+
+/* Sotto il breakpoint desktop il menu diventa un pannello verticale.
+   La classe --collapsed la mette e la toglie app.js. */
+.js .site-nav {
+  width: 100%;
+}
+.js .site-nav.site-nav--collapsed {
+  display: none;
+}
+.js .site-nav ul {
+  flex-direction: column;
+  gap: 0;
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (min-width: 60em) {
+  .nav-toggle { display: none !important; }
+  /* Su desktop il menu è sempre aperto: ignoro --collapsed anche se è
+     rimasta nel DOM */
+  .js .site-nav.site-nav--collapsed { display: block; }
+  /* Serve rimettere width:auto, altrimenti il 100% del pannello mobile
+     resta attivo e il menu si accavalla al logo */
+  .js .site-nav {
+    width: auto;
+  }
+  .js .site-nav ul {
+    flex-direction: row;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top: none;
+  }
+}
+
+/* ---- Hero ---- */
+.hero {
+  padding-top: var(--space-9);
+  padding-bottom: var(--space-9);
+  background-color: var(--color-bg);
+  /* Colore scritto a mano e non come var(): dentro linear-gradient() il
+     validator W3C non conta bene gli argomenti e segnala un errore.
+     Per la dark mode lo ridefinisco qui sotto. */
+  background-image: linear-gradient(180deg, rgba(31, 92, 61, 0.08), transparent 60%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero {
+    background-image: linear-gradient(180deg, rgba(127, 209, 166, 0.1), transparent 60%);
+  }
+}
+.hero__eyebrow {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-3);
+}
+.hero__lead {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+  max-width: 56ch;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* ---- Il contesto: prosa + stat grid ---- */
+.prose-grid {
+  display: grid;
+  gap: var(--space-7);
+}
+.prose p { margin-bottom: var(--space-4); }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  align-content: start;
+}
+.stat-grid__item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.stat-grid__item dt {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-1);
+}
+.stat-grid__item dd {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+@media (min-width: 60em) {
+  .prose-grid {
+    grid-template-columns: 1.3fr 1fr;
+    align-items: start;
+  }
+}
+
+/* ---- Diagramma di filiera (SVG) ---- */
+.chain-diagram {
+  width: 100%;
+  height: auto;
+  margin-top: var(--space-6);
+}
+.chain-diagram__label {
+  font-size: 15px;
+  font-weight: 700;
+  fill: var(--color-text);
+}
+.chain-diagram__caption {
+  font-size: 12px;
+  fill: var(--color-text-muted);
+}
+
+/* ---- Pilastri (accordion) ---- */
+.pillar-grid {
+  display: grid;
+  /* 1fr scritto esplicitamente: senza, la colonna implicita si dimensiona
+     sul contenuto e le card restavano strette a sinistra.
+     Una colonna sola a tutte le larghezze: tanto si apre un pilastro alla
+     volta, così il testo ha tutta la riga. */
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+.pillar-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-5);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+/* Bordo colorato sul pilastro aperto, altrimenti non si capisce a colpo
+   d'occhio a quale card appartiene il testo che si sta leggendo */
+.pillar-card[open] {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+.pillar-card summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  list-style: none;
+}
+/* Il triangolino nativo è diverso in ogni browser: lo tolgo e disegno una
+   freccia con ::after, che ruota quando la card è aperta. */
+.pillar-card summary::-webkit-details-marker { display: none; }
+.pillar-card summary::after {
+  content: "";
+  margin-left: auto;
+  width: 0.6em;
+  height: 0.6em;
+  border-right: 2px solid var(--color-text-muted);
+  border-bottom: 2px solid var(--color-text-muted);
+  transform: rotate(45deg);
+  transition: transform var(--transition-fast);
+}
+.pillar-card[open] summary::after {
+  transform: rotate(-135deg);
+}
+.pillar-card__icon {
+  font-size: 1.4em;
+}
+.pillar-card__body {
+  padding-bottom: var(--space-5);
+  color: var(--color-text-muted);
+}
+.pillar-card__body p {
+  margin-bottom: var(--space-3);
+  /* Annulla il "p { max-width: 68ch }" in cima al file, che qui teneva il
+     testo fermo a metà card */
+  max-width: none;
+  /* Giustificato per riempire tutta la riga. L'ultima riga resta a sinistra
+     da sola, e hyphens evita buchi fra le parole. */
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+/* ---- I numeri: grafici ---- */
+.chart-grid {
+  display: grid;
+  gap: var(--space-5);
+}
+.chart-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+.chart-card h3 { font-size: var(--font-size-base); margin-bottom: var(--space-1); }
+.chart-card__meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+/* Link al pilastro collegato. Lo spazio prima del grafico l'ho spostato
+   qui da .chart-card__meta. */
+.chart-card__related {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-4);
+}
+.chart-card__canvas-wrap {
+  position: relative;
+  height: 280px;
+}
+.chart-card__canvas-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (min-width: 60em) {
+  .chart-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .chart-card--wide {
+    grid-column: 1 / -1;
+  }
+  .chart-card--wide .chart-card__canvas-wrap {
+    height: 380px;
+  }
+}
+
+/* ---- Obiettivi 2030: timeline ---- */
+.timeline {
+  display: grid;
+  gap: var(--space-4);
+}
+.timeline__item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+.timeline__item h3 { margin-top: var(--space-2);
+ margin-bottom: var(--space-2); }
+.timeline__item p { color: var(--color-text-muted); }
+.timeline__icon { font-size: 1.6em; }
+.timeline__note {
+  margin-top: var(--space-3);
+  font-size: var(--font-size-sm);
+}
+.timeline__item--highlight {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  border-color: var(--color-primary);
+}
+.timeline__item--highlight h3,
+.timeline__item--highlight p { color: inherit; }
+/* Il riquadro verde occupa tutta la riga, ma il max-width globale sui <p>
+   teneva il testo in una colonna stretta a sinistra */
+.timeline__item--highlight p {
+  max-width: none;
+}
+
+@media (min-width: 60em) {
+  /* 3 e non 4 colonne: le card normali sono tre (il riquadro verde sta a
+     riga sua). Con 4 restava una colonna vuota a destra. */
+  .timeline {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .timeline__item--highlight {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---- Archivio report ---- */
+.archive-filter fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+}
+.archive-filter legend {
+  /* display:table + margin auto è il trucco per centrare un <legend>
+     tenendo l'intaglio nel bordo stretto sul testo */
+  display: table;
+  margin-inline: auto;
+  font-weight: var(--font-weight-medium);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+}
+.archive-filter__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+}
+.archive-filter select {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.archive-count {
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.report-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+/* Card in stile scheda: copertina + tre fasce separate da un bordo
+   (titolo, dettagli, pulsanti). In colonna su mobile, affiancate da 48em. */
+.report-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.report-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: 1px solid var(--color-border);
+  display: block;
+}
+.report-card__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.report-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+.report-card__label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-1);
+}
+/* Spazio per due righe di titolo anche se ne serve una: i titoli hanno
+   lunghezze diverse e le card devono restare alte uguali */
+.report-card h3 {
+  display: flex;
+  align-items: center;
+  min-height: calc(var(--line-height-tight) * 2em);
+  font-size: var(--font-size-base);
+  margin: 0;
+}
+.report-card__year {
+  flex: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+}
+.report-card__desc-wrap {
+  flex: 1;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+/* Come sopra: due righe fisse, così le sintesi (meta più corta) non
+   risultano più basse dei bilanci integrali */
+.report-card__meta {
+  margin: 0;
+  min-height: calc(var(--line-height-base) * 2em);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-base);
+}
+.report-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  padding: var(--space-4) var(--space-5);
+}
+.report-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.report-card__source {
+  font-size: var(--font-size-sm);
+}
+
+/* Card escluse dal filtro: uso [hidden], che app.js imposta già di suo */
+.report-card[hidden] { display: none; }
+
+@media (min-width: 48em) {
+  /* Altezza fissa, non min-height: senza un'altezza vera "height: 100%"
+     sull'immagine non ha un riferimento e ogni copertina imponeva la sua
+     proporzione (le verticali 400x565 molto più alte delle 400x283).
+     Con l'altezza fissa object-fit: cover ritaglia tutte allo stesso modo. */
+  .report-card {
+    flex-direction: row;
+    height: 19rem;
+  }
+  .report-card__image {
+    width: 34%;
+    height: 100%;
+    aspect-ratio: auto;
+    border-bottom: none;
+    border-right: 1px solid var(--color-border);
+  }
+}
+
+/* ---- Dialog di anteprima ---- */
+.preview-dialog {
+  width: min(90vw, 60rem);
+  height: min(85vh, 50rem);
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+/* ::backdrop è lo sfondo dietro il dialog: senza questa regola il browser
+   ci mette un nero pieno */
+.preview-dialog::backdrop {
+  background: rgb(10 15 12 / 0.6);
+}
+.preview-dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+.preview-dialog__header h2 { font-size: var(--font-size-lg); }
+.preview-dialog__close {
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+}
+.preview-dialog__close:hover { color: var(--color-text); background: var(--color-surface-alt); }
+.preview-dialog__object {
+  width: 100%;
+  height: calc(100% - 4.5rem);
+}
+.preview-dialog__fallback {
+  padding: var(--space-6);
+  text-align: center;
+}
+
+/* ---- Fonti / accessibilità ---- */
+.info-columns {
+  display: grid;
+  gap: var(--space-6);
+}
+.info-columns h3 { margin-top: var(--space-5);
+ margin-bottom: var(--space-2); }
+.info-columns h3:first-child { margin-top: 0; }
+.info-columns p { color: var(--color-text-muted); margin-bottom: var(--space-3); }
+.check-list {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.check-list li {
+  position: relative;
+  padding-left: var(--space-6);
+  color: var(--color-text-muted);
+}
+.check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+@media (min-width: 60em) {
+  .info-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+}
+.site-footer a { color: inherit; }
+.site-footer__inner {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+}

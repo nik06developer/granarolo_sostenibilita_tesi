@@ -1,0 +1,119 @@
+/* Design token: colori, spazi, tipografia.
+   Tutto quello che si ripete sta qui, così la dark mode in fondo al file
+   ridefinisce solo le variabili e charts.js può rileggerle da JS.
+   Palette: verdi da pascolo e bianco latte. */
+
+:root {
+  /* ---- Superfici e testo (tema chiaro) ---- */
+  --color-bg: #faf9f4;             /* bianco latte, sfondo pagina */
+  --color-surface: #ffffff;        /* card, header, dialog */
+  --color-surface-alt: #f0f4f0;    /* sezioni alternate, sfondo tabelle */
+  --color-text: #16241c;           /* 15.3:1 su --color-bg */
+  --color-text-muted: #3f5348;     /* 7.8:1 su --color-bg */
+  --color-border: #d8e0da;
+
+  /* ---- Brand ---- */
+  --color-primary: #1f5c3d;        /* verde prato — CTA, link, header */
+  --color-primary-dark: #163f2a;   /* hover/active */
+  --color-primary-contrast: #ffffff; /* testo su primary — 7.9:1 */
+  --color-accent: #8a5a00;         /* ambra — badge ed evidenze — 5.6:1 */
+
+  /* ---- Focus ----
+     Colore usato solo qui, così l'anello di focus non si confonde mai con
+     un accento decorativo. */
+  --color-focus: #b45309;
+
+  /* ---- Footer ----
+     Colore già calcolato invece di color-mix(): il validator W3C non
+     conosce ancora quella funzione e la segnala come errore. Stesso motivo
+     per cui il gradiente della hero è scritto a mano in style.css. */
+  --footer-bg: #163f2a;
+  --footer-text: #e3e8e5;   /* ~9.5:1 su --footer-bg */
+
+  /* ---- Grafici ----
+     charts.js legge questi valori con getComputedStyle(), così i grafici
+     seguono il tema senza colori scritti nel JS. */
+  --chart-color-1: #1f5c3d;
+  --chart-color-2: #8a5a00;
+  --chart-color-3: #3e8e68;
+  --chart-color-4: #6b7f74;
+  --chart-color-5: #c17a1f;
+  --chart-color-6: #2f6f8f;
+  --chart-grid: #d8e0da;
+  --chart-text: #3f5348;
+
+  /* ---- Tipografia ----
+     Font di sistema: niente da scaricare, il sito funziona anche offline. */
+  --font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif;
+
+  /* clamp() invece di breakpoint dedicati per il solo testo */
+  --font-size-sm: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --font-size-base: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --font-size-lg: clamp(1.15rem, 1.05rem + 0.4vw, 1.4rem);
+  --font-size-xl: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem);
+  --font-size-2xl: clamp(1.8rem, 1.4rem + 1.6vw, 2.75rem);
+  --font-size-3xl: clamp(2.2rem, 1.6rem + 2.6vw, 3.75rem);
+
+  --line-height-tight: 1.2;
+  --line-height-base: 1.6;
+  --font-weight-normal: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+
+  /* ---- Spaziatura: scala da 4px ---- */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-7: 3rem;      /* 48px */
+  --space-9: 6rem;      /* 96px */
+
+  /* ---- Layout ---- */
+  --content-max-width: 74rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-pill: 999px;
+
+  /* Una sola ombra, usata dal dialog di anteprima */
+  --shadow-lg: 0 16px 48px rgb(22 36 28 / 0.18);
+
+  --transition-fast: 150ms ease;
+}
+
+/* Dark mode: ridefinisco solo i token, mai le regole dei componenti.
+   Contrasti ricalcolati: testo principale 14.8:1, secondario 9.8:1. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #122019;
+    --color-surface: #1b2e24;
+    --color-surface-alt: #16261d;
+    --color-text: #eaf2ec;
+    --color-text-muted: #b9c9be;
+    --color-border: #2b4237;
+
+    --color-primary: #7fd1a6;
+    --color-primary-dark: #a4e2c1;
+    --color-primary-contrast: #0d1a13;
+    --color-accent: #e0b45a;
+
+    --color-focus: #f2a65a;
+
+    --footer-bg: #0d1a13;
+    --footer-text: #cfd8d2;   /* ~12.3:1 su --footer-bg */
+
+    --chart-color-1: #7fd1a6;
+    --chart-color-2: #e0b45a;
+    --chart-color-3: #4f9c76;
+    --chart-color-4: #9fb3a6;
+    --chart-color-5: #e2a15e;
+    --chart-color-6: #7ec3e6;
+    --chart-grid: #2b4237;
+    --chart-text: #b9c9be;
+
+    --shadow-lg: 0 16px 48px rgb(0 0 0 / 0.55);
+  }
+}
