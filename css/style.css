@@ -11,6 +11,7 @@ body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
@@ -164,6 +165,7 @@ code, kbd {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   /* Distanza minima fra logo e menu: con la finestra stretta, poco sopra il
      breakpoint desktop, altrimenti si toccano prima di andare a capo */
   gap: var(--space-6);
@@ -535,17 +537,29 @@ code, kbd {
 }
 .archive-filter__row {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   gap: var(--space-2) var(--space-4);
 }
 .archive-filter select {
+  width: 100%;
   padding: var(--space-2) var(--space-3);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   background: var(--color-surface);
   color: var(--color-text);
+}
+
+@media (min-width: 48em) {
+  .archive-filter__row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .archive-filter select {
+    width: auto;
+  }
 }
 .archive-count {
   margin-top: var(--space-4);
