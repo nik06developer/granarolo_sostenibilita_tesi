@@ -586,7 +586,6 @@ code, kbd {
 }
 .report-card__image {
   width: 100%;
-  aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: top;
   border-bottom: 1px solid var(--color-border);
