@@ -18,6 +18,8 @@ p, figure, blockquote, dl, dd {
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  overflow-x: hidden;
+  touch-action: pan-y;
   overscroll-behavior-x: none;
 }
 
