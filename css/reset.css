@@ -18,6 +18,7 @@ p, figure, blockquote, dl, dd {
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  overscroll-behavior-x: none;
 }
 
 body {
